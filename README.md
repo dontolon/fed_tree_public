@@ -36,3 +36,22 @@ After training you can evaluate and visualize results:
 python3 evaluate.py --experiment_dir ./outputs/fedavg_example --plot
 ```
 This computes loss, accuracy and class-wise metrics for the federated and centralized models and saves confusion matrices when `--plot` is set.
+
+## Full arguments list
+
+| Argument           | Default                  | Description                                                        |
+| ------------------ | ------------------------ | ------------------------------------------------------------------ |
+| `--dataset`        | `cifar100`               | Dataset to use (currently only `cifar100` is supported)            |
+| `--model`          | `mobilenet_v3_small`     | Backbone model architecture                                        |
+| `--agg`            | `fedavg`                 | Aggregation strategy: `fedavg`, `fedavgm`, `fedprox`, or `fednova` |
+| `--mu`             | `0.0`                    | Proximal term coefficient for FedProx                              |
+| `--rounds`         | `30`                     | Number of communication rounds                                     |
+| `--local_epochs`   | `5`                      | Number of local training epochs per round                          |
+| `--central_epochs` | `1`                      | Number of epochs for centralized baseline training                 |
+| `--num_clients`    | `4`                      | Total number of clients in the federation                          |
+| `--batch_size`     | `32`                     | Training batch size                                                |
+| `--alpha`          | `0.5`                    | Dirichlet concentration for non-IID data split                     |
+| `--lr`             | `1e-3`                   | Learning rate                                                      |
+| `--seed`           | `42`                     | Random seed for reproducibility                                    |
+| `--output_dir`     | `./outputs/experiment_1` | Path to save models, logs, and metadata                            |
+
