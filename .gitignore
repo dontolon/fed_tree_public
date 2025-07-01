@@ -1,0 +1,8 @@
+**.ipynb
+**.ipynb_checkpoints
+# everything in the folder data
+data/
+# all csv files
+**.csv
+__pycache__
+outputs/
