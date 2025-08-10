@@ -6,3 +6,5 @@ data/
 **.csv
 __pycache__
 outputs/
+# SSH keys
+jump/
