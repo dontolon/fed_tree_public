@@ -102,7 +102,7 @@ def main(args):
 
         avg_loss = sum(sz * l for sz, l in zip(client_sizes, round_losses)) / sum(client_sizes)
         fed_avg_losses.append(avg_loss)
-        print(f"Using aggregation: {args.agg}")
+        print(f"Using aggregation: {args.agg}, round {rnd}, average loss: {avg_loss:.4f}")
         if args.agg == 'fednova':
             server.aggregate(client_states, client_sizes, client_steps=[args.local_epochs]*len(client_states))
         else:
