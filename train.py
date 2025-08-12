@@ -32,6 +32,7 @@ def split_clients(class_indices, num_clients, alpha):
     return client_idxs
 
 def train_centralized(model, dataloader, device, lr, epochs):
+    print("Training centralized model...")
     model = model.to(device)
     model.train()
     opt = torch.optim.Adam(model.parameters(), lr=lr)
@@ -57,7 +58,7 @@ def train_centralized(model, dataloader, device, lr, epochs):
 def main(args):
     set_seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+    print(f"Using device: {device}")
     os.makedirs(args.output_dir, exist_ok=True)
 
     transform = get_transform(model_type=args.model)
@@ -80,7 +81,7 @@ def main(args):
 
     fed_avg_losses = []
     fed_client_losses = [[] for _ in range(args.num_clients)]
-
+    print("Starting federated training...")
     for rnd in range(1, args.rounds + 1):
         client_states = []
         client_sizes = []
